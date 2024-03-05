@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure</title>
+</head>
+<body>
+<button id="orange">orange</button>
+<button id="green">green</button>
+
+</body>
+<script>
+   //function init(){
+       // let name="Mozilla";
+     //   function displayName(){
+   //         console.log(name)
+   //     }
+   //     displayName();
+   // }
+   // init(); 
+   function makeFunc(){
+    const name="Mozilla";
+    function displayName(){
+        console.log(name);
+    }
+   }
+   const fun=makeFunc()
+</script>
+<script>
+   function clickHandler(color){
+    function childHandler(){
+        document.body.style.backgroundColor=`${color}`
+    }
+    //so here child handler function scope is not return but lexical scope
+    //of the function is also return.
+    return childHandler
+   }
+   document.querySelector("#orange").onclick=clickHandler("orange");
+   document.querySelector("#green").onclick=clickHandler("green");
+</script>
+</html>
